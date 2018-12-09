@@ -1,0 +1,43 @@
+<script src="simpletest.js"></script>
+<script src="betterToFixed.js"></script>
+<script>
+/*
+* Exception Cases:
+  * Case 1: If there is no precision, just return value as a string.
+  * Case 2: If no decimal point is specified inside the value and if precision is specified,
+    return 0s to the end of the string precision times.
+  * Case 3: If there are decimal point and precision return propertly fixed number with precision decimals
+  * Case 4: If precision > lengthElemAfterDot, return 0s to the end of the string as long as
+  the difference between the two.
+*/
+
+
+  tests({
+    'If there is no precision return num':function(){
+      const returnedValue = betterToFixed(123.12);
+      eq(returnedValue, 123.12)
+    },
+    'If there is no dot, return num with dot and precision zeros':function(){
+      const returnedValue = betterToFixed(1234, 3)
+      eq(returnedValue, 1234.000);
+    },
+    'If there are dot and precision, return num with precision decimals':function(){
+      const returnedValue = betterToFixed(234.215, 2);
+      eq(returnedValue, 234.22);
+    },
+    'If precision is bigger than elemsAfterDot.length add precision-elemsAfterDot.length zeros':function(){
+      const returnedValue = betterToFixed(212.23, 4);
+      eq(returnedValue, 212.2300);
+    },
+    'It should work with 0.615, 10.235 and 1.005': function(){
+      const returnedValue1 = betterToFixed(0.615, 2);
+      const returnedValue2 = betterToFixed(10.235, 2);
+      const returnedValue3 = betterToFixed(1.005, 2);
+
+      eq(returnedValue1, 0.62);
+      eq(returnedValue2, 10.24);
+      eq(returnedValue3, 1.01);
+    }
+  })
+
+</script>
