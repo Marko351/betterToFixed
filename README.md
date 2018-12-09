@@ -1,6 +1,6 @@
 # betterToFixed
 
-An attempt to challange 6 #Beasts Watch and Code
+An attempt to [challange 6](https://github.com/gordonmzhu/beasts/issues/7) #Beasts Watch and Code
 
 My goal in this challange is to create a better version of the Number.prototype.toFixed(), which will call betterToFixed().
 
